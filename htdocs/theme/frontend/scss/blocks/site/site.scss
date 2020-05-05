@@ -1,6 +1,7 @@
 @import '../../global';
 
 .site {
+
     &__inner {
         &-sidebar {
             @extend %fixed-left;

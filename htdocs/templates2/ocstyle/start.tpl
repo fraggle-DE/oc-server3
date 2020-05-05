@@ -2,18 +2,16 @@
 * You can find the license in the docs directory
 ***************************************************************************}
 
-<div class="content-txtbox-noshade">
-    <div class="content-txtbox-noshade">
-        <p class="startmessage">{$message}</p>
-        <div class="buffer" style="width: 500px;">&nbsp;</div>
-    </div>
+<div class="container-fluid ">
+    <img class="img-fluid" src="images/static/OC_Titelbild_2.jpg">
 </div>
 
 {if $core_hq_message.message !=""}
-    <div class="note note-{$core_hq_message.type}">
-        {$core_hq_message.message}
+    <div class="container-fluid ">
+        <div class="flash-messages__alert">
+            {$core_hq_message.message}
+        </div>
     </div>
-    <p></p>
 {/if}
 
 {foreach from=$sections item=section}
@@ -117,25 +115,36 @@
                     <p><em>{t}currently not available{/t}</em></p>
                 {/if}
             </div>
-            <div class="buffer" style="width: 500px;">&nbsp;</div>
         {/if}
 
         {* new caches *}
     {elseif $section == 'newcaches'}
-        <div class="content2-container bg-blue02">
-            <p class="content-title-noshade-size3">
-                <img src="resource2/{$opt.template.style}/images/cacheicon/traditional.gif" style="margin-right: 10px;"
-                     width="24" height="24" alt=""/>
-                <a href="newcaches.php?country={$usercountryCode}"
-                   style="color:rgb(88,144,168); text-decoration: none;">{t 1=$usercountry|escape}Newest caches in %1{/t}</a>
-                &nbsp; <span class="content-title-link">[<a href="newcaches.php">{t}more{/t}...</a>]</span>
-            </p>
-        </div>
-        <p style="line-height: 1.6em;">
-            ({t 1=$count_hiddens 2=$count_founds 3=$count_users}Total of %1 active Caches and %2 founds by %3 users{/t}
-            )</p>
-        <div class="content2-section-no-p">
-            {include file="res_newcaches.tpl" newcaches=$newcaches}
+        <div class="container-fluid">
+            <div class="row oc-title">
+                <div class="col-1">
+                    <img src="resource2/{$opt.template.style}/images/cacheicon/traditional.gif">
+                </div>
+                <div class="col-9 oc-title__title">
+                    <a href="newcaches.php?country={$usercountryCode}">
+                        {t 1=$usercountry|escape}Newest caches in %1{/t}
+                    </a>
+                </div>
+                <div class="col-2 oc-title__link">
+                    [
+                    <a href="newcaches.php">{t}more{/t}...</a>
+                    ]
+                </div>
+            </div>
+
+            <div class="row">
+                {include file="res_newcaches.tpl" newcaches=$newcaches}
+            </div>
+
+            <div class="row float-right">
+                ({t 1=$count_hiddens 2=$count_founds 3=$count_users}Total of %1 active Caches and %2 founds by %3 users{/t}
+                )
+            </div>
         </div>
     {/if}
+
 {/foreach}

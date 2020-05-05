@@ -1,0 +1,19 @@
+@import '../../global';
+
+.oc-title {
+    background: $oc-main;
+    font-size: 1.2rem;
+    color: $white;
+
+    > a {
+        color: $white;
+    }
+
+    &__title {
+        text-transform: uppercase;
+    }
+
+    &__link {
+        text-transform: uppercase;
+    }
+}

@@ -1,5 +1,9 @@
 @import 'global';
 
+//==========BOOTSTRAP==========//
+@import '~bootstrap/scss/bootstrap';
+
+
 //==========BLOCKS==========//
 @import 'blocks/flash-messages/flash-messages';
 
@@ -10,9 +14,7 @@
 
 @import 'blocks/sidebar/sidebar';
 @import 'blocks/site/site';
+@import 'blocks/event/event';
+@import 'blocks/title/title';
 
-@import 'blocks/kitchensink/kitchensink';
-
-//==========BOOTSTRAP==========//
-@import '~bootstrap/scss/reboot';
 @import 'common';

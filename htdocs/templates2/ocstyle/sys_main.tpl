@@ -24,6 +24,7 @@
         <meta http-equiv="gallerimg" content="no" />
         <meta http-equiv="cache-control" content="no-cache" />
         <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+
         <base href="/" />
 
         <link rel="SHORTCUT ICON" href="favicon.ico" />
@@ -32,14 +33,10 @@
         <link rel="apple-touch-icon" sizes="114x114" href="resource2/{$opt.template.style}/images/oclogo/apple-touch-icon-iphone-retina.png" />
         <link rel="apple-touch-icon" sizes="144x144" href="resource2/{$opt.template.style}/images/oclogo/apple-touch-icon-ipad-retina.png" />
 
-        {if $core_hq_message}
-        <!-- Bootstrap core CSS -->
-        <link href="../../resource2/mdb-free/css/bootstrap.min.css" rel="stylesheet">
-        <!-- Material Design Bootstrap -->
-        <link href="../../resource2/mdb-free/css/mdb.min.css" rel="stylesheet">
-        <!-- Your custom styles (optional) -->
-        <link href="../../resource2/mdb-free/css/style.css" rel="stylesheet">
-        {/if}
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" type="text/css" media="screen" href="web/assets/css/style.min.css">
+
+        <!-- Legacy CSS -->
         <link rel="stylesheet" type="text/css" media="screen,projection" href="resource2/{$opt.template.style}/css/style_screen.css?ft={$screen_css_time}" />
         <!--[if lt IE 9]>
         <link rel="stylesheet" type="text/css" media="screen,projection" href="resource2/{$opt.template.style}/css/style_screen_msie.css?ft={$screen_msie_css_time}" />
@@ -54,9 +51,6 @@
                     nWindowWidth = window.innerWidth;
                 else if (screen.availWidth)
                     nWindowWidth = screen.availWidth;
-                if (nWindowWidth > 970)
-                    document.writeln('<link rel="stylesheet" type="text/css" media="screen,projection" href="{/literal}{season winter='resource2/ocstyle/css/seasons/style_winter.css' spring='resource2/ocstyle/css/seasons/style_spring.css' summer='resource2/ocstyle/css/seasons/style_summer.css' autumn='resource2/ocstyle/css/seasons/style_autumn.css'}{literal}" />');
-                document.writeln('<link rel="stylesheet" type="text/css" media="screen,projection" href="{/literal}{season winter='resource2/ocstyle/css/seasons/style_langstripe_winter.css' spring='resource2/ocstyle/css/seasons/style_langstripe_spring.css' summer='resource2/ocstyle/css/seasons/style_langstripe_summer.css' autumn='resource2/ocstyle/css/seasons/style_langstripe_autumn.css'}{literal}" />');
 
                 function usercountry_change()
                 {
@@ -406,12 +400,6 @@
 
     <!-- SCRIPTS -->
     <!-- JQuery -->
-    <script type="text/javascript" src="../../resource2/mdb-free/js/jquery-3.3.1.min.js"></script>
-    <!-- Bootstrap tooltips -->
-    <script type="text/javascript" src="../../resource2/mdb-free/js/popper.min.js"></script>
-    <!-- Bootstrap core JavaScript -->
-    <script type="text/javascript" src="../../resource2/mdb-free/js/bootstrap.min.js"></script>
-    <!-- MDB core JavaScript -->
-    <script type="text/javascript" src="../../resource2/mdb-free/js/mdb.min.js"></script>
+
 </body>
 </html>
