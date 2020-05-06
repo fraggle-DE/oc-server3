@@ -22,7 +22,7 @@
                 <td class="align-right">
                     <a href="viewprofile.php?userid={$cacheitem.user_id}">{$cacheitem.username|escape}</a>
                     <br>
-                    {$cacheitem.date_created|date_format:$opt.format.date}
+                    {$cacheitem.date_created|date_format:"%d.%m."}
                 </td>
             </tr>
         {/foreach}
