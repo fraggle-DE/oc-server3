@@ -1,0 +1,13 @@
+@import '../../global';
+
+.main__footer {
+    border-top: $red solid 0.25em;
+    background: $gray-darker;
+    color: $white;
+    padding: 1rem;
+    min-height: 10rem;
+
+    a {
+        color: $primary;
+    }
+}
