@@ -4,7 +4,16 @@ $font-size-base: 16px;
 $font-family-base: Play, Verdana;
 
 //========== OC COLORS =====//
+$primary: $red;
+$primary__light: lighten($primary, 20%);
+$primary__dark: darken($primary, 20%);
+
+$secondary: $green;
+$secondary__light: lighten($green, 20%);
+$secondary__dark: darken($green, 20%);
+
 $oc-main: $gray-500;
+
 
 //==========COLORS==========//
 $gray-lighter: $gray-500;

@@ -2,9 +2,6 @@
 * You can find the license in the docs directory
 ***************************************************************************}
 
-<div class="container-fluid ">
-    <img class="img-fluid" src="images/static/OC_Titelbild_2.jpg">
-</div>
 
 {if $core_hq_message.message !=""}
     <div class="container-fluid ">

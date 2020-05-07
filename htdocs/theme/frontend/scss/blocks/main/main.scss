@@ -5,4 +5,15 @@
         margin: 15px;
         max-width: 75%;
     }
+
+    &__topstage {
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+        height: 550px;
+    }
+}
+
+.main__home {
+    background-image: url('images/static/oc_titelbild_norwegen.jpg');
 }
