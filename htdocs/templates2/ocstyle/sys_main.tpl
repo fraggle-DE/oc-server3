@@ -118,14 +118,13 @@
 
 <section class="main__topstage main__home">
     <div class="container-fluid">
-        <div class="row content">
-            <div class="col-6 col-sm-5">
-                <h1 class="title">
-                    <img src="resource2/{$opt.template.style}/images/oclogo/{$opt.page.headoverlay}.png">
-                </h1>
-                <p class="lead">
-                    Der Weg das Ziel
-                </p>
+        <div class="main__content-box p-3 d-inline-flex">
+            <div class="p-5 svg-oc--brand svg__5x"></div>
+            <div class="p-2">
+                <div class="main__content ">
+                    <h2 class="main h2">Opencachnig.de</h2>
+                    <p>Der Weg das Ziel</p>
+                </div>
             </div>
         </div>
     </div>

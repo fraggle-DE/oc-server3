@@ -2,18 +2,36 @@
 
 .main {
     &__content {
-        margin: 15px;
-        max-width: 75%;
+        font-family: Play, Verdana;
+
+        h2 {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        p {
+            font-size: 1.5rem;
+        }
+    }
+
+    &__content-box {
+        background-color: rgba($white, .4);
+        border-radius: 1.5em;
+        position: relative;
+        top: 5rem;
+        left: 2.5rem;
     }
 
     &__topstage {
         background-size: cover;
         background-position: center center;
         background-repeat: no-repeat;
-        height: 550px;
+        background-color: $gray-light;
+        height: 50vw;
     }
+
 }
 
 .main__home {
-    background-image: url('images/static/oc_titelbild_norwegen.jpg');
+    background-image: url('../images/header/oc_titelbild_norwegen.jpg');
 }
