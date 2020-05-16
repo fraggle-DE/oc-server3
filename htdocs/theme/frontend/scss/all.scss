@@ -1,5 +1,9 @@
 @import 'global';
 
+//=========LIBARIES=========//
+@import 'lib/fonts/montserrat';
+@import 'lib/svg/icons';
+
 //==========BOOTSTRAP==========//
 @import '~bootstrap/scss/bootstrap';
 
@@ -21,5 +25,3 @@
 
 @import 'common';
 
-//=========LIBARIES=========//
-@import 'lib/svg/icons';

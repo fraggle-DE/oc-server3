@@ -87,69 +87,68 @@
 <section class="main__topstage main__home">
     <div class="container-fluid">
         <div class="main__content-box p-3 d-inline-flex">
-            <div class="p-5 svg-oc--brand svg__5x"></div>
-            <div class="p-2">
-                <div class="main__content ">
-                    <h2 class="main h2">Opencachnig.de</h2>
-                    <p>Der Weg das Ziel</p>
-                </div>
+            <div class="svg-oc--brand"></div>
+            <div class="main__content ">
+                <div class="main__content-title">Opencachnig.de</div>
+                <div class="main__content-tagline">Der Weg das Ziel</div>
             </div>
+
         </div>
     </div>
 </section>
 
 <div class="container-fluid">
-
     <div class="row">
+        <div class="col-3">
+            <div>
+                {* <!-- Navigation Level 2 --> *}
+                <div class="nav2">
+                    <ul>
+                        {nocache}
+                            {include file="sys_topmenu.tpl" items="$topmenu"}
+                        {/nocache}
+                    </ul>
+                </div> <!-- nav 2 -->
 
-        {* <!-- Navigation Level 2 --> *}
-        <div class="nav2">
-            <ul>
-                {nocache}
-                    {include file="sys_topmenu.tpl" items="$topmenu"}
-                {/nocache}
-            </ul>
-        </div> <!-- nav 2 -->
+
+                {* <!-- NAVIGATION --> *}
+                {* <!-- Navigation Level 3 --> *}
+                <div class="nav3">
+                    <ul>
+                        <li class="title">
+                            {if $submenu.0.parent==1}{* start page hack *}{t}News{/t}{else}{t}Main menu{/t}{/if}
+                        </li>
+                        {nocache}
+                            {include file="sys_submenu.tpl" items="$submenu"}
+                        {/nocache}
+                    </ul>
+                </div>
+            </div><!-- nav3 -->
+        </div>
 
 
-        {* <!-- NAVIGATION --> *}
-        {* <!-- Navigation Level 3 --> *}
-        <div class="nav3">
-            <ul>
-                <li class="title">
-                    {if $submenu.0.parent==1}{* start page hack *}{t}News{/t}{else}{t}Main menu{/t}{/if}
-                </li>
-                {nocache}
-                    {include file="sys_submenu.tpl" items="$submenu"}
-                {/nocache}
-            </ul>
-        </div> <!-- nav3 -->
-    </div>
-</div>
+        {* <!-- CONTENT --> *}
 
-{* <!-- CONTENT --> *}
-<div class="container-fluid">
-
-    <div class="col-3">
-        {if $opt.template.popup!=false && $opt.template.popupmargin!=false}
-            <div class="row">
+        <div class="col-9">
+            {if $opt.template.popup!=false && $opt.template.popupmargin!=false}
+                <div class="row">
+                    {include file="$template.tpl"}
+                </div>
+            {else}
                 {include file="$template.tpl"}
-            </div>
-        {else}
-            {include file="$template.tpl"}
-        {/if}
-    </div> <!-- ocmain -->
-
+            {/if}
+        </div> <!-- ocmain -->
+    </div>
 </div> <!-- content2 -->
 
-{* <!-- End Text Container --> *}
 
 {* <!-- FOOTER --> *}
-<div class="footer">
-    {include file="sys_footer.tpl"}
-</div>
-
-</div> <!-- page-container-1 -->
+<div class="container-fluid">
+    <div class="row">
+        <div class="footer">
+            {include file="sys_footer.tpl"}
+        </div>
+    </div>
 </div>
 
 
@@ -196,19 +195,6 @@
     </script>
 {/literal}
 {/if}
-
-{literal}
-    <!-- Fading Navbar from transparent to solid on scroll -->
-    <script type="text/javascript">
-        $(window).scroll(function () {
-            if ($(window).scrollTop() >= 50) {
-                $('.main__header').css('background', 'red');
-            } else {
-                $('.main__header').css('background', 'transparent');
-            }
-        });
-    </script>
-{/literal}
 
 </body>
 </html>
