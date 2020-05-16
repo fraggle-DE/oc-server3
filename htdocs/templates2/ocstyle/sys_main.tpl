@@ -39,6 +39,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" type="text/css" media="screen" href="web/assets/css/style.min.css">
+    <link rel="stylesheet" href="vendor/mervick/material-design-icons/css/material-icons.min.css">
 
     <script type="text/javascript" src="resource2/{$opt.template.style}/js/enlargeit/enlargeit.js"></script>
     <script type="text/javascript" src="resource2/{$opt.template.style}/js/tools.js"></script>
@@ -61,57 +62,24 @@
 <body{if $opt.session.url==true} onload="initSessionTimeout()"{/if}
         {foreach from=$opt.page.body_load item=loadItem name=bodyload}{if $smarty.foreach.bodyload.first} onload="{/if}{$loadItem};{if $smarty.foreach.bodyload.last}"{/if}{/foreach}
         {foreach from=$opt.page.body_unload item=unloadItem name=bodyunload}{if $smarty.foreach.bodyunload.first} onunload="{/if}{$unloadItem};{if $smarty.foreach.bodyunload.last}"{/if}{/foreach}
-        >
+>
 
 
 {include file="header/cookie_notice.tpl"}
 
-<header class="header">
-    <nav class="navbar">
-        <div class="row">
-            {if $opt.session.url==true}
-                <div id="sessionWarn">
-                    {* message is not properly formated and displays always 0
-                   don't enable this feature until this is fixed and tested *}
-                    Automatische Abmeldung in
-                    <div id="sessionTimout">0</div>&nbsp;Minuten -
-                    <a href="#" onclick="cancelSessionTimeout()">Abbrechen</a>
-                </div>
-            {/if}
+<header>
+    <nav class="main__header navbar fixed-top">
+        <div class="container-fluid">
+            <div class="col-auto">
+                <a href="/"><i class="mdi mdi-2x mdi-home"></i></a>
+            </div>
+            <div class="col-auto">
 
-            {nocache}
-                &nbsp;
-                {if $login.userid==0}
-                    <b>
-                        <form action="{$opt.page.login_url}" method="post"
-                              enctype="application/x-www-form-urlencoded" name="login" dir="ltr"
-                              style="display: inline;">{t}User:{/t}&nbsp;&nbsp;<input name="email" size="10"
-                                                                                      type="text"
-                                                                                      class="textboxes"
-                                                                                      value=""/>&nbsp;&nbsp;&nbsp;{t}Password:{/t}
-                                                                   &nbsp;&nbsp;<input name="password" size="10"
-                                                                                      type="password"
-                                                                                      class="textboxes"
-                                                                                      value=""/>&nbsp;<input
-                                    type="hidden" name="action" value="login"/><input type="hidden"
-                                                                                      name="target"
-                                                                                      value="{$opt.page.target|escape}"/><input
-                                    type="hidden" name="source" value="titlebar"/>&nbsp;<input name="LogMeIn"
-                                                                                               value="{t}Login{/t}"
-                                                                                               class="formbutton"
-                                                                                               type="submit"
-                                                                                               onclick="submitbutton('LogMeIn')"/>
-                        </form>
-                    </b>
-                {else}
-                    <b>{t}Logged in as{/t}
-                        <a href="myhome.php"
-                        >{$login.username|escape}</a>
-                    </b>
-                    -
-                    <a href="login.php?action=logout">{t}Logout{/t}</a>
-                {/if}
-            {/nocache}
+            </div>
+            <div class="col-auto">
+                {include file="header/login.tpl"}
+                {include file="header/user.tpl"}
+            </div>
         </div>
     </nav>
 </header>
@@ -156,30 +124,32 @@
                 {/nocache}
             </ul>
         </div> <!-- nav3 -->
+    </div>
+</div>
 
-        {* <!-- CONTENT --> *}
-        <div class="container-fluid">
+{* <!-- CONTENT --> *}
+<div class="container-fluid">
 
-            <div class="col-3">
-                {if $opt.template.popup!=false && $opt.template.popupmargin!=false}
-                    <div class="row">
-                        {include file="$template.tpl"}
-                    </div>
-                {else}
-                    {include file="$template.tpl"}
-                {/if}
-            </div> <!-- ocmain -->
+    <div class="col-3">
+        {if $opt.template.popup!=false && $opt.template.popupmargin!=false}
+            <div class="row">
+                {include file="$template.tpl"}
+            </div>
+        {else}
+            {include file="$template.tpl"}
+        {/if}
+    </div> <!-- ocmain -->
 
-        </div> <!-- content2 -->
+</div> <!-- content2 -->
 
-        {* <!-- End Text Container --> *}
+{* <!-- End Text Container --> *}
 
-        {* <!-- FOOTER --> *}
-        <div class="footer">
-            {include file="sys_footer.tpl"}
-        </div>
+{* <!-- FOOTER --> *}
+<div class="footer">
+    {include file="sys_footer.tpl"}
+</div>
 
-    </div> <!-- page-container-1 -->
+</div> <!-- page-container-1 -->
 </div>
 
 
@@ -226,6 +196,19 @@
     </script>
 {/literal}
 {/if}
+
+{literal}
+    <!-- Fading Navbar from transparent to solid on scroll -->
+    <script type="text/javascript">
+        $(window).scroll(function () {
+            if ($(window).scrollTop() >= 50) {
+                $('.main__header').css('background', 'red');
+            } else {
+                $('.main__header').css('background', 'transparent');
+            }
+        });
+    </script>
+{/literal}
 
 </body>
 </html>

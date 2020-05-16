@@ -1,16 +1,16 @@
-@import '~bootstrap/scss/variables';
+//@import '~bootstrap/scss/variables';
 
 $font-size-base: 16px;
 $font-family-base: Play, Verdana;
 
 //========== OC COLORS =====//
 $primary: $red;
-$primary__light: lighten($primary, 20%);
-$primary__dark: darken($primary, 20%);
+$primary__light: lighten($primary, 50%);
+$primary__dark: darken($primary, 50%);
 
 $secondary: $green;
-$secondary__light: lighten($green, 20%);
-$secondary__dark: darken($green, 20%);
+$secondary__light: lighten($green, 50%);
+$secondary__dark: darken($green, 50%);
 
 $oc-main: $gray-500;
 

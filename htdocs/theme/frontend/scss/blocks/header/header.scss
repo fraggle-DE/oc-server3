@@ -1,12 +1,13 @@
-@import '../../global';
-
-.header {
+.main__header {
+    border-bottom: $primary solid 0.25em;
+    background: rgba($gray-darker, .75);
     color: $white;
 
-    background-color: $primary__dark;
-    border-bottom: 0.2em solid $primary__light;
+    a {
+        color: $white;
+    }
 
-    > a {
-        color: $yellow;
+    a:hover {
+        color: $primary;
     }
 }

@@ -27,7 +27,24 @@
         background-position: center center;
         background-repeat: no-repeat;
         background-color: $gray-light;
-        height: 50vw;
+        height: 40vh;
+        border-bottom: $primary solid 0.25em;
+
+        @include media-breakpoint-up(sm) {
+            height: 50vh;
+        }
+
+        @include media-breakpoint-up(md) {
+            height: 60vh;
+        }
+
+        @include media-breakpoint-up(lg) {
+            height: 70vh;
+        }
+
+        @include media-breakpoint-up(xl) {
+            height: 85vh;
+        }
     }
 
 }
