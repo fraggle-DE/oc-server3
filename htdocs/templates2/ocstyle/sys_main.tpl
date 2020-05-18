@@ -1,12 +1,5 @@
-{***************************************************************************
-* You can find the license in the docs directory
-*
-*  Main template for "navigation frame" of all pages
-***************************************************************************}
-{* OCSTYLE *}
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="{$opt.template.locale}">
 <head>
     <title>
         {if ($opt.template.title=="")}
@@ -18,12 +11,9 @@
     <meta name="keywords" content="{$opt.page.meta.keywords|escape}"/>
     <meta name="description" content="{$opt.page.meta.description|escape}"/>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
-    <meta http-equiv="Content-Style-Type" content="text/css"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <meta http-equiv="Content-Language" content="{$opt.template.locale}"/>
-    <meta http-equiv="gallerimg" content="no"/>
-    <meta http-equiv="cache-control" content="no-cache"/>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
 
     <base href="/"/>
@@ -41,18 +31,7 @@
     <link rel="stylesheet" type="text/css" media="screen" href="web/assets/css/style.min.css">
     <link rel="stylesheet" href="vendor/mervick/material-design-icons/css/material-icons.min.css">
 
-    <script type="text/javascript" src="resource2/{$opt.template.style}/js/enlargeit/enlargeit.js"></script>
-    <script type="text/javascript" src="resource2/{$opt.template.style}/js/tools.js"></script>
-    {if $opt.session.url==true}
-        <script type="text/javascript">
-            {literal}
-            <!--
-            var sSessionId = '{/literal}{$opt.session.id|escape:'js'}{literal}';
-            //-->
-            {/literal}
-        </script>
-        <script src="resource2/{$opt.template.style}/js/session.js" type="text/javascript"></script>
-    {/if}
+
     {foreach from=$opt.page.header_javascript item=scriptItem}
         <script type="text/javascript" src="{$scriptItem}"></script>
     {/foreach}
@@ -67,19 +46,29 @@
 
 {include file="header/cookie_notice.tpl"}
 
-<header>
-    <nav class="main__header navbar fixed-top">
-        <div class="container-fluid">
-            <div class="col-auto">
-                <a href="/"><i class="mdi mdi-2x mdi-home"></i></a>
-            </div>
-            <div class="col-auto">
+<header class="main__header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerOcTopmenu"
+                aria-controls="navbarTogglerOcTopmenu" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarTogglerOcTopmenu">
+            <li class="navbar-brand">
+                <a class="nav-link" href="/"><i class="mdi mdi-2x mdi-home"></i></a>
+            </li>
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    {nocache}
+                        {include file="sys_topmenu.tpl" items="$topmenu"}
+                    {/nocache}
+                </li>
 
-            </div>
-            <div class="col-auto">
+            </ul>
                 {include file="header/login.tpl"}
                 {include file="header/user.tpl"}
-            </div>
         </div>
     </nav>
 </header>
@@ -97,60 +86,56 @@
     </div>
 </section>
 
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-3">
-            <div>
-                {* <!-- Navigation Level 2 --> *}
-                <div class="nav2">
-                    <ul>
-                        {nocache}
-                            {include file="sys_topmenu.tpl" items="$topmenu"}
-                        {/nocache}
-                    </ul>
-                </div> <!-- nav 2 -->
+<main>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-3">
+                <aside>
+
+                    <div class="nav2">
+                        <ul>
+
+                        </ul>
+                    </div>
+
+                    <div class="nav3">
+                        <ul>
+                            <li class="title">
+                                {if $submenu.0.parent==1}{* start page hack *}{t}News{/t}{else}{t}Main menu{/t}{/if}
+                            </li>
+                            {nocache}
+                                {include file="sys_submenu.tpl" items="$submenu"}
+                            {/nocache}
+                        </ul>
+                    </div>
+                </aside>
+            </div>
 
 
-                {* <!-- NAVIGATION --> *}
-                {* <!-- Navigation Level 3 --> *}
-                <div class="nav3">
-                    <ul>
-                        <li class="title">
-                            {if $submenu.0.parent==1}{* start page hack *}{t}News{/t}{else}{t}Main menu{/t}{/if}
-                        </li>
-                        {nocache}
-                            {include file="sys_submenu.tpl" items="$submenu"}
-                        {/nocache}
-                    </ul>
-                </div>
-            </div><!-- nav3 -->
-        </div>
+            {* <!-- CONTENT --> *}
 
-
-        {* <!-- CONTENT --> *}
-
-        <div class="col-9">
-            {if $opt.template.popup!=false && $opt.template.popupmargin!=false}
-                <div class="row">
+            <div class="col-9">
+                {if $opt.template.popup!=false && $opt.template.popupmargin!=false}
+                    <div class="row">
+                        {include file="$template.tpl"}
+                    </div>
+                {else}
                     {include file="$template.tpl"}
-                </div>
-            {else}
-                {include file="$template.tpl"}
-            {/if}
-        </div> <!-- ocmain -->
-    </div>
-</div> <!-- content2 -->
-
-
-{* <!-- FOOTER --> *}
-<div class="container-fluid">
-    <div class="row">
-        <div class="footer">
-            {include file="sys_footer.tpl"}
+                {/if}
+            </div>
         </div>
     </div>
-</div>
+</main>
 
+<footer>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="footer">
+                {include file="sys_footer.tpl"}
+            </div>
+        </div>
+    </div>
+</footer>
 
 {literal}
 <script type="text/javascript">
@@ -195,6 +180,12 @@
     </script>
 {/literal}
 {/if}
+
+<script src="vendor/components/jquery/jquery.min.js"></script>
+<script src="vendor/twbs/bootstrap/dist/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="resource2/{$opt.template.style}/js/enlargeit/enlargeit.js" async></script>
+<script type="text/javascript" src="resource2/{$opt.template.style}/js/tools.js" async></script>
 
 </body>
 </html>

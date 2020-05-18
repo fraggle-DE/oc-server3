@@ -1,53 +1,76 @@
 {nocache}
     {if $login.userid==0}
-        <div class="d-flex align-items-center justify-content-between">
-            <form
-                    action="{$opt.page.login_url}"
-                    method="post"
-                    enctype="application/x-www-form-urlencoded"
-                    name="login"
-                    dir="ltr"
-                    class="form-inline"
-            >
-                <input type="hidden" name="action" value="login"/>
-                <input type="hidden" name="target" value="{$opt.page.target|escape}"/>
-                <input type="hidden" name="source" value="titlebar"/>
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalOcLogin">
+            Login
+        </button>
+        <!-- Modal -->
+        <div class="modal  fade" id="modalOcLogin" data-backdrop="static" data-keyboard="false" tabindex="-1"
+             role="dialog" aria-labelledby="modalOcLoginLabel" aria-hidden="true">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalOcLoginLabel">Login into Opencaching</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container">
+                            <form
+                                    action="{$opt.page.login_url}"
+                                    method="post"
+                                    enctype="application/x-www-form-urlencoded"
+                                    name="login"
+                                    dir="ltr"
+                                    class="form-inline"
+                            >
+                                <input type="hidden" name="action" value="login"/>
+                                <input type="hidden" name="target" value="{$opt.page.target|escape}"/>
+                                <input type="hidden" name="source" value="titlebar"/>
 
-                <div class="d-flex align-items-center">
-                    <div class="mr-2">
-                        <label class="sr-only" for="inlineFormInputGroup">Username</label>
-                        <div class="input-group">
-                            <div class="bg-dark">
-                                <i class="mdi mdi-2x mdi-account-circle"></i>
-                            </div>
-                            <input
-                                    name="email"
-                                    placeholder="{t}User{/t}"
-                                    type="text"
-                                    class="form-control form-control-sm"
-                            />
+                                <div class="col-xs-12 col-md-5">
+                                    <div class="form-group">
+                                        <label for="LoginInput">Login</label>
+                                        <input
+                                                name="email"
+                                                placeholder="{t}User{/t}"
+                                                type="text"
+                                                class="form-control form-control-sm"
+                                                id="LoginInput"
+                                        />
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-md-5">
+                                    <div class="form-group">
+                                        <label for="PasswordInput">Password</label>
+                                        <input name="password"
+                                               placeholder="{t}Password{/t}"
+                                               type="password"
+                                               class="form-control form-control-sm"
+                                               id="PasswordInput"
+                                               value=""/>
+                                    </div>
+                                </div>
+
+                                <div class="col-xs-12 col-md-2">
+                                    <button name="LogMeIn"
+                                            class="btn btn-xs btn-primary"
+                                            type="submit"
+                                            onclick="submitbutton('LogMeIn')"/>
+                                    <i class="mdi mdi-done"></i>
+                                    </button>
+                                </div>
+
+                            </form>
                         </div>
                     </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Register</button>
+                        <button type="button" class="btn btn-primary">Understood</button>
+                    </div>
                 </div>
-                <div class="mr-2">
-                    <label class="sr-only" for="inlineFormInputGroup">Password</label>
-                    <input name="password"
-                           placeholder="{t}Password{/t}"
-                           type="password"
-                           class="form-control form-control-sm"
-                           value=""/>
-                </div>
-
-                <div class="">
-                    <button name="LogMeIn"
-                            class="btn btn-md btn-primary"
-                            type="submit"
-                            onclick="submitbutton('LogMeIn')"/>
-                    <i class="mdi mdi-done"></i>
-                    </button>
-                </div>
-
-            </form>
+            </div>
         </div>
     {/if}
 {/nocache}
