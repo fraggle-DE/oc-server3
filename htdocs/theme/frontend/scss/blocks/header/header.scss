@@ -1,5 +1,7 @@
+@import '../../global';
+
 .main__header {
-    border-bottom: $primary solid 0.25em;
+    border-bottom: $oc-primary solid 0.25em;
     background: rgba($gray-darker, .75);
     color: $white;
 
@@ -8,6 +10,6 @@
     }
 
     a:hover {
-        color: $primary;
+        color: $oc-primary__dark;
     }
 }

@@ -80,7 +80,7 @@
         background-repeat: no-repeat;
         background-color: $gray-light;
         height: 40vh;
-        border-bottom: $primary solid 0.25em;
+        border-bottom: $oc-primary solid 0.25em;
 
         @include media-breakpoint-up(sm) {
             height: 50vh;

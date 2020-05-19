@@ -4,6 +4,7 @@
 @import 'lib/fonts/montserrat';
 @import 'lib/svg/icons';
 @import 'lib/js/cookiealert';
+@import 'lib/bootstrap/modal';
 
 //==========BOOTSTRAP==========//
 @import '~bootstrap/scss/bootstrap';
@@ -15,12 +16,6 @@
 @import 'blocks/main/main';
 @import 'blocks/header/header';
 @import 'blocks/footer/footer';
-
-@import 'blocks/navigation/navigation';
-@import 'blocks/navigation/navigation-item';
-
-@import 'blocks/sidebar/sidebar';
-@import 'blocks/site/site';
 @import 'blocks/event/event';
 @import 'blocks/title/title';
 
