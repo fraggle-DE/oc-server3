@@ -44,8 +44,6 @@
 >
 
 
-{include file="header/cookie_notice.tpl"}
-
 <header class="main__header">
     <nav class="navbar navbar-expand-lg navbar-dark">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerOcTopmenu"
@@ -67,11 +65,14 @@
                 </li>
 
             </ul>
-                {include file="header/login.tpl"}
-                {include file="header/user.tpl"}
+            {include file="header/login.tpl"}
+            {include file="header/user.tpl"}
         </div>
     </nav>
+
 </header>
+
+{include file="header/cookie_notice.tpl"}
 
 <section class="main__topstage main__home">
     <div class="container-fluid">
@@ -81,7 +82,6 @@
                 <div class="main__content-title">Opencachnig.de</div>
                 <div class="main__content-tagline">Der Weg das Ziel</div>
             </div>
-
         </div>
     </div>
 </section>
@@ -181,6 +181,7 @@
 {/literal}
 {/if}
 
+<script src="web/assets/js/main.js"></script>
 <script src="vendor/components/jquery/jquery.min.js"></script>
 <script src="vendor/twbs/bootstrap/dist/js/bootstrap.min.js"></script>
 
