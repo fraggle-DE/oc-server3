@@ -1,13 +1,21 @@
 @import '../../global';
 
-.main__footer {
-    border-top: $red solid 0.25em;
-    background: $gray-darker;
-    color: $white;
-    padding: 1rem;
-    min-height: 10rem;
+.main {
+    &__footer {
+        border-top: $red solid 0.25em;
+        background: $gray-darker;
+        color: $white;
+        padding: 1rem;
+        min-height: 10rem;
 
-    a {
-        color: $primary;
+        a {
+            color: $primary;
+        }
     }
+}
+
+.footer__small {
+    font-family: 'Montserrat';
+    font-size: 0.7rem;
+    font-weight: 300;
 }

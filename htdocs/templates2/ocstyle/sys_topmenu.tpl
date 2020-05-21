@@ -6,10 +6,10 @@
     {foreach name=topmenu from=$items item=menuitem}
 
         <li class="nav-item">
-            <a class="nav-link"
+            <a class="nav-link {if $menuitem.selected}active{/if}"
                href="{$menuitem.href}"
                     {$menuitem.target}
-                    {if $menuitem.selected} class="active"{/if}>{$menuitem.menustring|escape}</a>
+                    >{$menuitem.menustring|escape}</a>
         </li>
 
     {/foreach}

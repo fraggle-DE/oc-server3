@@ -55,15 +55,11 @@
                 <a class="nav-link" href="/"><i class="mdi mdi-2x mdi-home"></i></a>
             </li>
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                </li>
                 <li class="nav-item">
                     {nocache}
                         {include file="sys_topmenu.tpl" items="$topmenu"}
                     {/nocache}
                 </li>
-
             </ul>
             {include file="header/login.tpl"}
             {include file="header/user.tpl"}
@@ -91,13 +87,6 @@
         <div class="row">
             <div class="col-3">
                 <aside>
-
-                    <div class="nav2">
-                        <ul>
-
-                        </ul>
-                    </div>
-
                     <div class="nav3">
                         <ul>
                             <li class="title">
@@ -128,13 +117,7 @@
 </main>
 
 <footer>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="footer">
-                {include file="sys_footer.tpl"}
-            </div>
-        </div>
-    </div>
+    {include file="sys_footer.tpl"}
 </footer>
 
 {literal}

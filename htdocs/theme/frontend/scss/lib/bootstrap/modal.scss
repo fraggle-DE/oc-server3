@@ -3,4 +3,8 @@
 
 .modal {
     color: $oc-primary__dark;
+
+    &__footer {
+        color: $gray;
+    }
 }
