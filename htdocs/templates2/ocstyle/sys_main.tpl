@@ -75,8 +75,8 @@
         <div class="main__content-box p-3 d-inline-flex">
             <div class="svg-oc--brand"></div>
             <div class="main__content ">
-                <div class="main__content-title">Opencachnig.de</div>
-                <div class="main__content-tagline">Der Weg das Ziel</div>
+                <div class="main__content-title">Opencaching.de</div>
+                <div class="main__content-tagline">Der Weg ist das Ziel</div>
             </div>
         </div>
     </div>
