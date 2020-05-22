@@ -83,27 +83,21 @@
 </section>
 
 <main>
+    {if $core_hq_message.message !=""}
+        <div class="container-fluid ">
+            <div class="row">
+                <div class="hq-messgage--container">
+                    {$core_hq_message.message}
+                </div>
+            </div>
+        </div>
+    {/if}
+
     <div class="container-fluid">
         <div class="row">
-            <div class="col-3">
-                <aside>
-                    <div class="nav3">
-                        <ul>
-                            <li class="title">
-                                {if $submenu.0.parent==1}{* start page hack *}{t}News{/t}{else}{t}Main menu{/t}{/if}
-                            </li>
-                            {nocache}
-                                {include file="sys_submenu.tpl" items="$submenu"}
-                            {/nocache}
-                        </ul>
-                    </div>
-                </aside>
-            </div>
-
 
             {* <!-- CONTENT --> *}
-
-            <div class="col-9">
+            <div class="col-12">
                 {if $opt.template.popup!=false && $opt.template.popupmargin!=false}
                     <div class="row">
                         {include file="$template.tpl"}
@@ -112,6 +106,7 @@
                     {include file="$template.tpl"}
                 {/if}
             </div>
+
         </div>
     </div>
 </main>
