@@ -25,18 +25,18 @@ class UserProvider implements UserProviderInterface
     /**
      * @throws Exception
      */
-    public function loadUserByUsername($username): UserInterface
+    public function loadUserByIdentifier($identifier): UserInterface
     {
         try {
-            return $this->userRepository->fetchOneByUsername($username);
+            return $this->userRepository->fetchOneByUsername($identifier);
         } catch (RecordNotFoundException $e) {
-            throw new UserNotFoundException('User by username "' . $username . '" not found!', 0, $e);
+            throw new UserNotFoundException('User by username "' . $identifier . '" not found!', 0, $e);
         }
     }
 
     /**
-     * @throws RecordNotFoundException
      * @throws Exception
+     * @throws RecordNotFoundException
      */
     public function refreshUser(UserInterface $user): UserInterface
     {
