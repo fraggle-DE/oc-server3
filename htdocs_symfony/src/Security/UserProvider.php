@@ -38,6 +38,7 @@ class UserProvider implements UserProviderInterface
      * @throws Exception
      * @throws RecordNotFoundException
      */
+    // TODO: 'UserInterface $user' und 'instance of UserEntity' passen doch nicht zusammen, oder?
     public function refreshUser(UserInterface $user): UserInterface
     {
         if (!$user instanceof UserEntity) {

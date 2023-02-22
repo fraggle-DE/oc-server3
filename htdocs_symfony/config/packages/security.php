@@ -12,18 +12,25 @@ return static function(ContainerConfigurator $containerConfigurator)
     $containerConfigurator->extension('security', [
         'enable_authenticator_manager' => true,
         'providers' => [
-            'users' => [
-                'id' => UserProvider::class,
-            ],
+                'app_user_provider' => [
+                        'entity' => [
+                                'class' => 'Oc\Entity\UserEntity',
+                                'property' => 'username'
+                        ]
+                ]
+//            'users' => [
+//                'id' => UserProvider::class,
+//            ],
         ],
         // Hack for our database role hierarchy
         'role_hierarchy' => ['ROLE_USER' => 'ROLE_USER'],
         'password_hashers' => [
-            UserEntity::class => [
-                'algorithm' => 'md5',
-                'encode_as_base64' => false,
-                'iterations' => 0,
-            ]
+                'Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface' => 'auto'
+//            UserEntity::class => [
+//                'algorithm' => 'md5',
+//                'encode_as_base64' => false,
+//                'iterations' => 0,
+//            ]
         ],
         'firewalls' => [
             'dev' => [
@@ -32,7 +39,8 @@ return static function(ContainerConfigurator $containerConfigurator)
             ],
             'main' => [
                 'lazy' => true,
-                'provider' => 'users',
+                'provider' => 'app_user_provider',
+//                'provider' => 'users',
                 'logout' => [
                     'path' => 'app_security_logout',
                     // where to redirect after logout

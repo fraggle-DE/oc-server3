@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fda06c505af6d209310b6f1b582c5eb7",
+    "content-hash": "1e57f085b6fe65edbed4c3fffda8b4e5",
     "packages": [
         {
             "name": "composer/package-versions-deprecated",
@@ -8335,16 +8335,16 @@
         },
         {
             "name": "symplify/config-transformer",
-            "version": "12.0.3",
+            "version": "12.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symplify/config-transformer.git",
-                "reference": "c66179db76d30a194fbd6f63c8d1e94dfd300b8d"
+                "reference": "1b21a1ea429a378319d6313b4b024492b2f776c9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symplify/config-transformer/zipball/c66179db76d30a194fbd6f63c8d1e94dfd300b8d",
-                "reference": "c66179db76d30a194fbd6f63c8d1e94dfd300b8d",
+                "url": "https://api.github.com/repos/symplify/config-transformer/zipball/1b21a1ea429a378319d6313b4b024492b2f776c9",
+                "reference": "1b21a1ea429a378319d6313b4b024492b2f776c9",
                 "shasum": ""
             },
             "require": {
@@ -8366,7 +8366,7 @@
             "description": "Prefixed version of Symfony YAML/XML to PHP/YAML config converter",
             "support": {
                 "issues": "https://github.com/symplify/config-transformer/issues",
-                "source": "https://github.com/symplify/config-transformer/tree/12.0.3"
+                "source": "https://github.com/symplify/config-transformer/tree/12.0.5"
             },
             "funding": [
                 {
@@ -8378,7 +8378,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-02-20T12:29:31+00:00"
+            "time": "2023-02-22T19:32:35+00:00"
         },
         {
             "name": "symplify/easy-testing",
@@ -8460,16 +8460,16 @@
         },
         {
             "name": "symplify/package-builder",
-            "version": "11.3.1",
+            "version": "11.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symplify/package-builder.git",
-                "reference": "82c4af217a93a640f4cbdba5a6a1f828039591e7"
+                "reference": "4a29cf0bc3ab6dfa0b3316fedf2fdd2a88d04a06"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symplify/package-builder/zipball/82c4af217a93a640f4cbdba5a6a1f828039591e7",
-                "reference": "82c4af217a93a640f4cbdba5a6a1f828039591e7",
+                "url": "https://api.github.com/repos/symplify/package-builder/zipball/4a29cf0bc3ab6dfa0b3316fedf2fdd2a88d04a06",
+                "reference": "4a29cf0bc3ab6dfa0b3316fedf2fdd2a88d04a06",
                 "shasum": ""
             },
             "require": {
@@ -8479,7 +8479,8 @@
                 "symfony/config": "^6.2",
                 "symfony/console": "^6.2",
                 "symfony/dependency-injection": "^6.2",
-                "symfony/finder": "^6.2"
+                "symfony/finder": "^6.2",
+                "symfony/http-kernel": "^6.2"
             },
             "require-dev": {
                 "php-parallel-lint/php-parallel-lint": "^1.3",
@@ -8510,7 +8511,7 @@
             ],
             "description": "Dependency Injection, Console and Kernel toolkit for Symplify packages.",
             "support": {
-                "source": "https://github.com/symplify/package-builder/tree/11.3.1"
+                "source": "https://github.com/symplify/package-builder/tree/11.3.2"
             },
             "funding": [
                 {
@@ -8522,7 +8523,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-02-19T13:57:42+00:00"
+            "time": "2023-02-22T19:16:30+00:00"
         },
         {
             "name": "symplify/smart-file-system",
@@ -8659,7 +8660,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": "^8.1",
+        "php": "^7.4||^8.1",
         "ext-ctype": "*",
         "ext-iconv": "*"
     },

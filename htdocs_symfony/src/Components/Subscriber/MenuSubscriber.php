@@ -7,7 +7,7 @@ namespace Oc\Components\Subscriber;
 use KevinPapst\AdminLTEBundle\Event\KnpMenuEvent;
 use Knp\Menu\ItemInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use Symfony\Component\Security\Core\Security;
+use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
