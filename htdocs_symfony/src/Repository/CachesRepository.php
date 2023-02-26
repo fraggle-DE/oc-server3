@@ -460,6 +460,7 @@ class CachesRepository
     public function getCacheiconImagename(GeoCachesEntity $entity): array
     {
         if ($this->security->getUser() != null) {
+            // TODO: prüfen, ob getUser()->userId wirklich was liefert, da die Funktion von $this->security kommt und nix mit userId kennt..
             $loggedInUserId = $this->security->getUser()->userId;
         } else {
             $loggedInUserId = 0;

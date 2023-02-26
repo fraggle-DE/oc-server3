@@ -2,24 +2,24 @@
 
 declare(strict_types=1);
 
-use Oc\Security\LoginFormAuthenticator;
-use Oc\Security\UserProvider;
-use Oc\Entity\UserEntity;
+//use Oc\Security\LoginFormAuthenticator;
+//use Oc\Security\UserProvider;
+//use Oc\Entity\UserEntity;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 
 return static function(ContainerConfigurator $containerConfigurator)
 : void {
     $containerConfigurator->extension('security', [
-        'enable_authenticator_manager' => true,
         'providers' => [
                 'app_user_provider' => [
                         'entity' => [
-                                'class' => 'Oc\Entity\UserEntity',
-                                'property' => 'username'
+//                                'class' => 'Oc\Entity\UserEntity',
+                                'class' => 'Oc\Security\UserProvider',
+//                                'property' => 'username'
                         ]
-                ]
+                ],
 //            'users' => [
-//                'id' => UserProvider::class,
+//                'id' => UserProvider::class
 //            ],
         ],
         // Hack for our database role hierarchy
@@ -33,6 +33,7 @@ return static function(ContainerConfigurator $containerConfigurator)
 //            ]
         ],
         'firewalls' => [
+                // 'dev' not in use
             'dev' => [
                 'pattern' => '^/(_(profiler|wdt)|css|images|js)/',
                 'security' => false

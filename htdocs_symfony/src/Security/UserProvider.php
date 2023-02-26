@@ -38,14 +38,13 @@ class UserProvider implements UserProviderInterface
      * @throws Exception
      * @throws RecordNotFoundException
      */
-    // TODO: 'UserInterface $user' und 'instance of UserEntity' passen doch nicht zusammen, oder?
     public function refreshUser(UserInterface $user): UserInterface
     {
         if (!$user instanceof UserEntity) {
             throw new UnsupportedUserException(sprintf('Invalid user class "%s".', get_class($user)));
         }
 
-        return $this->userRepository->fetchOneByUsername($user->getUsername());
+        return $this->userRepository->fetchOneByUsername($user->getUserIdentifier());
     }
 
     /**

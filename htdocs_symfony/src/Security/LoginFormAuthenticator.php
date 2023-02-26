@@ -7,7 +7,7 @@ namespace Oc\Security;
 use Oc\Repository\UserRepository;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
-//use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Exception\UserNotFoundException;
@@ -28,21 +28,21 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
 
     private UrlGeneratorInterface $urlGenerator;
 
-//    private CsrfTokenManagerInterface $csrfTokenManager;
+    private CsrfTokenManagerInterface $csrfTokenManager;
 
-//    private UserPasswordHasherInterface $passwordEncoder;
+    private UserPasswordHasherInterface $passwordEncoder;
 
     private UserRepository $userRepository;
 
     public function __construct(
             UserRepository $userRepository,
-            UrlGeneratorInterface $urlGenerator
-//            CsrfTokenManagerInterface $csrfTokenManager,
-//            UserPasswordHasherInterface $passwordEncoder
+            UrlGeneratorInterface $urlGenerator,
+            CsrfTokenManagerInterface $csrfTokenManager,
+            UserPasswordHasherInterface $passwordEncoder
     ) {
         $this->urlGenerator = $urlGenerator;
-//        $this->csrfTokenManager = $csrfTokenManager;
-//        $this->passwordEncoder = $passwordEncoder;
+        $this->csrfTokenManager = $csrfTokenManager;
+        $this->passwordEncoder = $passwordEncoder;
         $this->userRepository = $userRepository;
     }
 
@@ -53,15 +53,16 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
 
         // https://symfonycasts.com/screencast/symfony6-upgrade/custom-authenticator
         return new Passport(
-                new UserBadge($userName, function ($userIdentifier) {
+                new UserBadge($userName, function ($userIdentifierx) {
                     // optionally pass a callback to load the User manually
-                    $user = $this->userRepository->fetchOneBy(['username' => $userIdentifier]);
+                    $user = $this->userRepository->fetchOneBy(['username' => $userIdentifierx]);
                     if (!$user) {
                         throw new UserNotFoundException();
                     }
 
                     return $user;
                 }),
+//                new UserBadge($userName),
                 new PasswordCredentials($password),
                 [
                         new CsrfTokenBadge(
@@ -93,5 +94,11 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
     {
         return $this->urlGenerator->generate(self::LOGIN_ROUTE);
     }
+
+//    public function supports(Request $request): bool
+//    {
+//        dd([$this->getLoginUrl($request), $request->getPathInfo()]);
+//        return $request->isMethod('POST');
+//    }
 }
 

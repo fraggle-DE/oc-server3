@@ -37,6 +37,10 @@ class SecurityController extends AbstractController
      */
     public function login(): Response
     {
+         if ($this->getUser()) {
+             return $this->redirectToRoute('target_path');
+         }
+
         // get the login error if there is one
         $error = $this->authenticationUtils->getLastAuthenticationError();
         // last username entered by the user
@@ -85,7 +89,7 @@ class SecurityController extends AbstractController
             $user->activationCode = $userRepository->generateActivationCode();
             $user->firstname = isset($user->firstname) ? trim($user->firstname) : '';
             $user->lastname = isset($user->lastname) ? trim($user->lastname) : '';
-            $user->password = $passwordEncoder->encodePassword(
+            $user->password = $passwordEncoder->hashPassword(
                     $user,
                     $userRegistrationForm->get('plainPassword')->getData()
             );

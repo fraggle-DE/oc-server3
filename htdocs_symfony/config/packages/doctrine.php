@@ -19,7 +19,8 @@ return static function (ContainerConfigurator $containerConfigurator): void {
             'mappings' => [
                 'App' => [
                     'is_bundle' => false,
-                    'type' => 'annotation',
+                        'type' => 'annotation',
+//                        'type' => 'attribute',
                     'dir' => '%kernel.project_dir%/src/Entity',
                     'prefix' => 'App\Entity',
                     'alias' => 'App'

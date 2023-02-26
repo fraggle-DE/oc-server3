@@ -9,6 +9,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Security\Core\Role\RoleHierarchyInterface;
 use Symfony\Bundle\SecurityBundle\Security;
+use Symfony\Component\Console\Attribute\AsCommand;
 
 class TestCommand extends Command
 {

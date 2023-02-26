@@ -5,11 +5,13 @@ declare(strict_types=1);
 namespace Oc\Entity;
 
 use Oc\Repository\AbstractEntity;
+//use Symfony\Component\Security\Core\User\LegacyPasswordAuthenticatedUserInterface;
+//
+//class UserEntity extends AbstractEntity implements LegacyPasswordAuthenticatedUserInterface
 use Symfony\Component\Security\Core\User\LegacyPasswordAuthenticatedUserInterface;
-use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
-class UserEntity extends AbstractEntity implements LegacyPasswordAuthenticatedUserInterface
+class UserEntity extends AbstractEntity implements UserInterface, LegacyPasswordAuthenticatedUserInterface
 {
     public int $userId = 0;
 
@@ -68,14 +70,15 @@ class UserEntity extends AbstractEntity implements LegacyPasswordAuthenticatedUs
 
     public function getSalt(): ?string
     {
+//        return $this->salt;
         return null;
     }
 
-    public function getUsername(): string
-    {
-        return $this->username;
-    }
-
+//    public function getUsername(): string
+//    {
+//        return $this->username;
+//    }
+//
     public function getUserIdentifier(): string
     {
         return $this->getUsername();
