@@ -36,6 +36,13 @@ class UserProvider implements UserProviderInterface
 
     /**
      * @throws Exception
+     */
+    public function loadUserByUsername($username): UserInterface {
+        return $this->loadUserByIdentifier($username);
+    }
+
+    /**
+     * @throws Exception
      * @throws RecordNotFoundException
      */
     public function refreshUser(UserInterface $user): UserInterface
