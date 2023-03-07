@@ -22,7 +22,7 @@ return static function (ContainerConfigurator $containerConfigurator): void {
                         'type' => 'annotation',
 //                        'type' => 'attribute',
                     'dir' => '%kernel.project_dir%/src/Entity',
-                    'prefix' => 'App\Entity',
+                    'prefix' => 'Oc\Entity',
                     'alias' => 'App'
                 ]
             ]

@@ -58,6 +58,7 @@
     "psr-4": {
       "OcTest\\": "../tests",
       "Oc\\": "src/Oc",
+      "OcLib2\\": "lib2/logic",
       "": "src/"
     },
     "classmap": [

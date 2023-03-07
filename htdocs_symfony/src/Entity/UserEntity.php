@@ -9,9 +9,10 @@ use Oc\Repository\AbstractEntity;
 //
 //class UserEntity extends AbstractEntity implements LegacyPasswordAuthenticatedUserInterface
 use Symfony\Component\Security\Core\User\LegacyPasswordAuthenticatedUserInterface;
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
-class UserEntity extends AbstractEntity implements UserInterface, LegacyPasswordAuthenticatedUserInterface
+class UserEntity extends AbstractEntity implements UserInterface, PasswordAuthenticatedUserInterface
 {
     public int $userId = 0;
 
@@ -65,7 +66,7 @@ class UserEntity extends AbstractEntity implements UserInterface, LegacyPassword
 
     public function getPassword(): ?string
     {
-        return null;
+        return $this->password;
     }
 
     public function getSalt(): ?string
@@ -74,11 +75,11 @@ class UserEntity extends AbstractEntity implements UserInterface, LegacyPassword
         return null;
     }
 
-//    public function getUsername(): string
-//    {
-//        return $this->username;
-//    }
-//
+    public function getUsername(): string
+    {
+        return $this->username;
+    }
+
     public function getUserIdentifier(): string
     {
         return $this->getUsername();

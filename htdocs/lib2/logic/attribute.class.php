@@ -3,6 +3,8 @@
  * for license information see LICENSE.md
  ***************************************************************************/
 
+namespace OcLib2;
+
 class attribute
 {
     /* array with all attributes grouped by attribute group */

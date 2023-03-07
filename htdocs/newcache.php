@@ -575,7 +575,7 @@ if (!$error) {
                 $line = mb_ereg_replace('{img_large}', $record['icon_large'], $line);
                 $line = mb_ereg_replace(
                     '{conflicting_attribs}',
-                    implode(',', attribute::getConflictingAttribIds($record['id'])),
+                    implode(',', OcLib2\attribute::getConflictingAttribIds($record['id'])),
                     $line
                 );
                 if ($cache_attrib_array != '') {
