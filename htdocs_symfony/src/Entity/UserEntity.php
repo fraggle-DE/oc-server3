@@ -4,29 +4,40 @@ declare(strict_types=1);
 
 namespace Oc\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\Entity;
+use Doctrine\ORM\Mapping\GeneratedValue;
+use Doctrine\ORM\Mapping\Id;
+use Doctrine\ORM\Mapping\Table;
 use Oc\Repository\AbstractEntity;
-//use Symfony\Component\Security\Core\User\LegacyPasswordAuthenticatedUserInterface;
-//
-//class UserEntity extends AbstractEntity implements LegacyPasswordAuthenticatedUserInterface
-use Symfony\Component\Security\Core\User\LegacyPasswordAuthenticatedUserInterface;
+use Symfony\Component\Security\Core\User\EquatableInterface;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
-class UserEntity extends AbstractEntity implements UserInterface, PasswordAuthenticatedUserInterface
+/**
+ * @Entity
+ * @Table(name="user")
+ */
+class UserEntity extends AbstractEntity implements UserInterface, PasswordAuthenticatedUserInterface, EquatableInterface
 {
+    /**
+     * @Id
+     * @ORM\Column(type="integer")
+     * @GeneratedValue(strategy="AUTO")
+     */
     public int $userId = 0;
 
-    public string $dateCreated;
+    public string $dateCreated = '';
 
-    public string $lastModified;
+    public string $lastModified = '';
 
-    public string $lastLogin;
+    public string $lastLogin = '';
 
-    public string $username;
+    public string $username = '';
 
-    public string $password;
+    public string $password = '';
 
-    public string $email;
+    public string $email = '';
 
     public bool $emailProblems = false;
 
@@ -36,15 +47,15 @@ class UserEntity extends AbstractEntity implements UserInterface, PasswordAuthen
 
     public bool $isActive = false;
 
-    public string $firstname;
+    public string $firstname = '';
 
-    public string $lastname;
+    public string $lastname = '';
 
-    public string $country;
+    public string $country = '';
 
     public bool $permanentLoginFlag = true;
 
-    public string $activationCode;
+    public string $activationCode = '';
 
     public string $language = 'DE';
 
@@ -52,7 +63,9 @@ class UserEntity extends AbstractEntity implements UserInterface, PasswordAuthen
 
     public bool $gdprDeletion = false;
 
-    public array $roles;
+    public array $roles = ['ROLE_USER'];
+
+    private string $salt = '';
 
     public function isNew(): bool
     {
@@ -61,7 +74,9 @@ class UserEntity extends AbstractEntity implements UserInterface, PasswordAuthen
 
     public function getRoles(): array
     {
-        return $this->roles;
+        $roles = $this->roles;
+        $roles[] = 'ROLE_USER';
+        return array_unique($roles);
     }
 
     public function getPassword(): ?string
@@ -87,5 +102,23 @@ class UserEntity extends AbstractEntity implements UserInterface, PasswordAuthen
 
     public function eraseCredentials(): void
     {
+    }
+
+    // TODO: Funktion wieder rauswerfen?
+    public function isEqualTo(UserInterface $user): bool
+    {
+        if ($this->password !== $user->getPassword()) {
+            return false;
+        }
+
+        if ($this->salt !== $user->getSalt()) {
+            return false;
+        }
+
+        if ($this->username !== $user->getUsername()) {
+            return false;
+        }
+
+        return true;
     }
 }

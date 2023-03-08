@@ -20,7 +20,6 @@ return static function (ContainerConfigurator $containerConfigurator): void {
                 'App' => [
                     'is_bundle' => false,
                         'type' => 'annotation',
-//                        'type' => 'attribute',
                     'dir' => '%kernel.project_dir%/src/Entity',
                     'prefix' => 'Oc\Entity',
                     'alias' => 'App'
