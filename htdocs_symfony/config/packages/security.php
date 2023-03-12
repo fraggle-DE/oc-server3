@@ -10,9 +10,15 @@ use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigura
 use Symfony\Config\SecurityConfig;
 
 return static function (ContainerConfigurator $containerConfigurator, SecurityConfig $security): void {
-    $security->passwordHasher(UserEntity::class)
-            ->id(LegacyHasher::class)
-            ->algorithm(LegacyHasher::class);
+//    $security->passwordHasher(UserEntity::class)
+//            ->id(LegacyHasher::class)
+//            ->algorithm(LegacyHasher::class);
+
+//    $security->provider('app_user_provider')
+//            ->entity()
+//            ->class(User::class)
+//            ->property('email');
+
     // TODO: die Rollenhierarchie hier einpflegen statt in der Datenbank? Was ist effizienter?
     // https://symfony.com/doc/current/security.html#security-role-hierarchy
     // $security->roleHierarchy('ROLE_SUPER_ADMIN', ['ROLE_ADMIN', 'ROLE_USER']);
@@ -20,14 +26,22 @@ return static function (ContainerConfigurator $containerConfigurator, SecurityCo
     // https://symfony.com/doc/current/reference/configuration/security.html#access-control
     // https://symfony.com/doc/5.3/security/user_providers.html#user-session-refresh
     $containerConfigurator->extension('security', [
+            'password_hashers' => [
+                    'Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface' => 'auto'
+            ],
             'providers' => [
-                    'app_user_provider' => [
-                            'entity' => [
-//                                    'class' => 'Oc\Entity\UserEntity',
-                                    'class' => UserEntity::class,
-                                    'property' => 'username',
-                            ]
-                    ],
+//                    'app_user_provider' => [
+//                            'entity' => [
+//                                    'class' => UserEntity::class,
+//                                    'property' => 'username',
+//                            ]
+//                    ],
+//                    'users_in_memory' => [
+//                            'memory' => null
+//                    ],
+                    'OC_user_provider' => [
+                            'id' => 'Oc\Security\UserProvider',
+                    ]
             ],
         // Hack for our database role hierarchy
             'role_hierarchy' => ['ROLE_USER' => 'ROLE_USER'],
@@ -37,7 +51,14 @@ return static function (ContainerConfigurator $containerConfigurator, SecurityCo
                     'dev' => [
                             'lazy' => true,
                             'pattern' => '^/(_(profiler|wdt)|css|images|js)/',
-                            'security' => false
+                            'security' => false,
+                            'custom_authenticator' => 'Oc\Security\LoginFormAuthenticator',
+                            'logout' => [
+                                    'enable_csrf' => true,
+                                    'path' => 'app_security_logout',
+                                    'target' => 'app_index_index' // where to redirect after logout
+                            ],
+                            'provider' => 'OC_user_provider',
                     ],
                     'main' => [
                             'custom_authenticator' => 'Oc\Security\LoginFormAuthenticator',
@@ -53,8 +74,10 @@ return static function (ContainerConfigurator $containerConfigurator, SecurityCo
                                     'path' => 'app_security_logout',
                                     'target' => 'app_index_index' // where to redirect after logout
                             ],
-                            'provider' => 'app_user_provider',
-//                            'stateless' => true,
+                            'provider' => 'OC_user_provider',
+//                            'provider' => 'app_user_provider',
+//                            'provider' => 'users_in_memory',
+                            'stateless' => true,
                     ]
             ],
             'access_control' => [
@@ -66,4 +89,7 @@ return static function (ContainerConfigurator $containerConfigurator, SecurityCo
                     ]
             ],
     ]);
+//    dd($containerConfigurator);
+//    die();
+
 };

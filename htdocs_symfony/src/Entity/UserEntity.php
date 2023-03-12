@@ -5,25 +5,22 @@ declare(strict_types=1);
 namespace Oc\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\ORM\Mapping\Entity;
 use Doctrine\ORM\Mapping\GeneratedValue;
-use Doctrine\ORM\Mapping\Id;
-use Doctrine\ORM\Mapping\Table;
 use Oc\Repository\AbstractEntity;
 use Symfony\Component\Security\Core\User\EquatableInterface;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
- * @Entity
- * @Table(name="user")
+ * @ORM\Entity
+ * @ORM\Table(name="user")
  */
 class UserEntity extends AbstractEntity implements UserInterface, PasswordAuthenticatedUserInterface, EquatableInterface
 {
     /**
-     * @Id
+     * @ORM\Id
      * @ORM\Column(type="integer")
-     * @GeneratedValue(strategy="AUTO")
+     * @GeneratedValue(strategy = "AUTO")
      */
     public int $userId = 0;
 
@@ -65,8 +62,6 @@ class UserEntity extends AbstractEntity implements UserInterface, PasswordAuthen
 
     public array $roles = ['ROLE_USER'];
 
-    private string $salt = '';
-
     public function isNew(): bool
     {
         return $this->userId === 0;
@@ -74,6 +69,8 @@ class UserEntity extends AbstractEntity implements UserInterface, PasswordAuthen
 
     public function getRoles(): array
     {
+//        dd('getRoles');
+//        die();
         $roles = $this->roles;
         $roles[] = 'ROLE_USER';
         return array_unique($roles);
@@ -86,22 +83,26 @@ class UserEntity extends AbstractEntity implements UserInterface, PasswordAuthen
 
     public function getSalt(): ?string
     {
-//        return $this->salt;
         return null;
     }
 
-    public function getUsername(): string
-    {
-        return $this->username;
-    }
+//    public function getUsername(): string
+//    {
+//        return $this->username;
+//    }
 
     public function getUserIdentifier(): string
     {
-        return $this->getUsername();
+//        dump('getUserIdentifier');
+//        dd('getUserIdentifier');
+//        die();
+        return $this->username;
     }
 
     public function eraseCredentials(): void
     {
+        // If you store any temporary, sensitive data on the user, clear it here
+        // $this->plainPassword = null;
     }
 
     // TODO: Funktion wieder rauswerfen?
@@ -115,10 +116,12 @@ class UserEntity extends AbstractEntity implements UserInterface, PasswordAuthen
             return false;
         }
 
-        if ($this->username !== $user->getUsername()) {
+        if ($this->username !== $user->getUserIdentifier()) {
             return false;
         }
-
+//
+//        dd('isEqualTo');
+//        die();
         return true;
     }
 }

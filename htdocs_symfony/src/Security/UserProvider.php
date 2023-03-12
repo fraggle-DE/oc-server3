@@ -27,6 +27,9 @@ class UserProvider implements UserProviderInterface
      */
     public function loadUserByIdentifier($identifier): UserInterface
     {
+        dump('loadUserByIdentifier');
+        dd($identifier);
+        die();
         try {
             return $this->userRepository->fetchOneByUsername($identifier);
         } catch (RecordNotFoundException $e) {
@@ -38,6 +41,9 @@ class UserProvider implements UserProviderInterface
      * @throws Exception
      */
     public function loadUserByUsername($username): UserInterface {
+        dump('loadUserByUsername');
+        dd($username);
+        die();
         return $this->loadUserByIdentifier($username);
     }
 

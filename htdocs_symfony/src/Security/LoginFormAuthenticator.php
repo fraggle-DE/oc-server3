@@ -52,7 +52,8 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
         $password = $request->request->get('password');
 
         // https://symfonycasts.com/screencast/symfony6-upgrade/custom-authenticator
-        return new Passport(
+//        return new Passport(
+        $temp = new Passport(
                 new UserBadge($userName, function ($userIdentifier) {
                     // optionally pass a callback to load the User manually
                     $user = $this->userRepository->fetchOneBy(['username' => $userIdentifier]);
@@ -72,6 +73,20 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
                         (new RememberMeBadge())->enable(),
                 ]
         );
+
+//        $temp = new UserBadge($userName, function ($userIdentifier) {
+//            // optionally pass a callback to load the User manually
+//            $user = $this->userRepository->fetchOneBy(['username' => $userIdentifier]);
+//            if (!$user) {
+//                throw new UserNotFoundException();
+//            }
+//
+//            return $user;
+//        });
+//        dd($temp);
+//        die();
+
+        return $temp;
     }
 
     /**
